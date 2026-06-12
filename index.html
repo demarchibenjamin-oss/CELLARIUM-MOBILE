@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#3a130d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cellarium">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Cellarium Mobile</title>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <section id="welcome" class="welcome">
+    <div class="welcome-card">
+      <img src="icon.png" class="welcome-icon" alt="Cellarium">
+      <h1>CELLARIUM</h1>
+      <p class="subtitle">Bibliothèque du goût et du temps</p>
+      <blockquote>« Le véritable voyage ne consiste pas à chercher de nouveaux paysages mais à avoir de nouveaux yeux. »</blockquote>
+      <button id="enterBtn">Entrer</button>
+    </div>
+  </section>
+
+  <section id="app" class="app hidden">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">Cellarium</span>
+        <h2 id="screenTitle">Souvenir du jour</h2>
+      </div>
+      <img src="icon.png" class="top-icon" alt="">
+    </header>
+
+    <main>
+      <section id="home" class="screen">
+        <article class="memory-card">
+          <span class="pill">Souvenir du jour</span>
+          <h3 id="dailyTitle">—</h3>
+          <p id="dailyText">—</p>
+        </article>
+
+        <div class="quick-grid">
+          <button data-nav="addBottle">+ Bouteille</button>
+          <button data-nav="addTasting">+ Dégustation</button>
+          <button data-nav="addTrace">+ Trace</button>
+        </div>
+
+        <article class="card">
+          <span class="pill">Cette semaine</span>
+          <p id="weeklyText">—</p>
+        </article>
+      </section>
+
+      <section id="cave" class="screen hidden">
+        <input id="search" class="search" placeholder="Rechercher dans la cave">
+        <div id="bottleList" class="list"></div>
+      </section>
+
+      <section id="carnet" class="screen hidden">
+        <div id="tastingList" class="list"></div>
+      </section>
+
+      <section id="traces" class="screen hidden">
+        <div id="traceList" class="list"></div>
+      </section>
+
+      <section id="addBottle" class="screen hidden">
+        <form id="bottleForm" class="form">
+          <input id="bWine" required placeholder="Vin / domaine">
+          <input id="bVintage" type="number" placeholder="Millésime">
+          <input id="bRegion" placeholder="Région">
+          <input id="bQty" type="number" value="1" placeholder="Quantité">
+          <input id="bValue" type="number" placeholder="Valeur estimée">
+          <input id="bDestiny" placeholder="Destinée à...">
+          <label><input id="bPantheon" type="checkbox"> Panthéon</label>
+          <button>Ajouter</button>
+        </form>
+      </section>
+
+      <section id="addTasting" class="screen hidden">
+        <form id="tastingForm" class="form">
+          <input id="tWine" required placeholder="Vin dégusté">
+          <input id="tDate" type="date">
+          <input id="tContext" placeholder="Contexte">
+          <input id="tPeople" placeholder="Avec qui ?">
+          <input id="tMood" placeholder="État d’esprit">
+          <input id="tScore" type="number" placeholder="Note /100">
+          <textarea id="tJournal" placeholder="Souvenir, sensation, image..."></textarea>
+          <button>Ajouter</button>
+        </form>
+      </section>
+
+      <section id="addTrace" class="screen hidden">
+        <form id="traceForm" class="form">
+          <select id="trType">
+            <option>Mémoire</option>
+            <option>Émotion</option>
+            <option>Philosophique</option>
+            <option>Culturelle</option>
+            <option>Relationnelle</option>
+            <option>Sensorielle</option>
+          </select>
+          <input id="trTitle" placeholder="Titre">
+          <textarea id="trContent" required placeholder="Ce qui reste..."></textarea>
+          <button>Ajouter</button>
+        </form>
+      </section>
+
+      <section id="portrait" class="screen hidden">
+        <div id="portrait" class="portrait"></div>
+      </section>
+    </main>
+
+    <nav class="tabbar">
+      <button class="active" data-nav="home">Souvenir</button>
+      <button data-nav="cave">Cave</button>
+      <button data-nav="carnet">Carnet</button>
+      <button data-nav="traces">Traces</button>
+      <button data-nav="portrait">Portrait</button>
+    </nav>
+  </section>
+</body>
+</html>

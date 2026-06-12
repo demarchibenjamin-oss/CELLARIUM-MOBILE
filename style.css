@@ -1,0 +1,46 @@
+:root{
+  --bg:#ead0a0;
+  --paper:#fff4dd;
+  --paper2:#f4d9a9;
+  --dark:#2b0f0a;
+  --dark2:#4a170f;
+  --gold:#c28b35;
+  --wine:#651b27;
+  --ink:#2b170d;
+  --muted:#73563b;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:linear-gradient(160deg,#f3dfb8,#d7ab6b);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.hidden{display:none!important}
+.welcome{min-height:100dvh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at top right,rgba(82,112,45,.35),transparent 30%),linear-gradient(160deg,#f5e5c4,#c7924c)}
+.welcome-card{width:100%;max-width:390px;text-align:center;background:rgba(255,244,221,.92);border:1px solid rgba(194,139,53,.7);border-radius:32px;padding:34px 24px;box-shadow:0 22px 55px rgba(64,31,8,.25)}
+.welcome-icon{width:112px;height:112px;object-fit:cover;border-radius:28px;box-shadow:0 10px 25px rgba(70,35,10,.25)}
+h1{font-family:Georgia,serif;letter-spacing:.16em;font-size:38px;margin:20px 0 6px;color:#6f4518}
+.subtitle{text-transform:uppercase;letter-spacing:.13em;font-size:12px;color:var(--wine);font-weight:700}
+blockquote{font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.55;color:#402516;margin:28px 0}
+button{font:inherit;cursor:pointer}
+.welcome button,.form button{border:1px solid #9e6b23;background:linear-gradient(#fff0c6,#c58b32);border-radius:999px;padding:14px 28px;font-weight:800;color:#3b210e}
+.app{min-height:100dvh;padding-bottom:78px}
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top)) 18px 14px;background:linear-gradient(180deg,#3a130d,#24100c);color:#e9c77f;box-shadow:0 8px 25px rgba(0,0,0,.28)}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:#c28b35}
+.topbar h2{font-family:Georgia,serif;margin:3px 0 0;font-size:23px}
+.top-icon{width:46px;height:46px;border-radius:12px;object-fit:cover}
+main{padding:18px}
+.card,.memory-card,.item,.form,.portrait-card{background:linear-gradient(180deg,#fff5df,#f3d7a5);border:1px solid rgba(150,95,31,.45);border-radius:24px;padding:18px;box-shadow:0 14px 32px rgba(80,43,14,.13)}
+.memory-card{min-height:240px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.memory-card h3{font-family:Georgia,serif;font-size:28px;margin:16px 0 8px}
+.memory-card p{font-family:Georgia,serif;font-style:italic;font-size:20px;line-height:1.45}
+.pill{align-self:center;display:inline-block;background:rgba(101,27,39,.1);color:var(--wine);border:1px solid rgba(101,27,39,.16);border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.quick-grid button{border:1px solid rgba(194,139,53,.5);background:#fff0cc;border-radius:18px;padding:14px 8px;color:#4a2a13;font-weight:700}
+.search{width:100%;border:1px solid rgba(150,95,31,.4);border-radius:18px;padding:14px;margin-bottom:14px;background:#fff6e6}
+.list{display:grid;gap:12px}
+.item h3{font-family:Georgia,serif;margin:0 0 8px;font-size:22px}
+.item p{margin:4px 0;color:var(--muted)}
+.form{display:grid;gap:12px}
+input,textarea,select{width:100%;border:1px solid rgba(150,95,31,.42);border-radius:16px;padding:14px;background:#fff9ed;font:inherit}
+textarea{min-height:120px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);gap:6px;background:linear-gradient(180deg,#4a170f,#250d09);border-top:1px solid rgba(194,139,53,.5)}
+.tabbar button{border:0;background:transparent;color:#d9b36f;font-size:12px;padding:8px 4px;border-radius:14px}
+.tabbar button.active{background:rgba(255,230,160,.13);color:#fff1c3}
+.portrait{display:grid;gap:12px}
