@@ -11,35 +11,19 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
-<title>Cellarium V10 Cave</title>
+<title>Cellarium V11</title>
 </head>
 <body>
 
 <section id="launch" class="launch">
-  <img src="launch.png" class="launch-img" alt="">
-  <button id="openLogin" class="launch-enter"></button>
-</section>
-
-<section id="login" class="login hidden">
-  <button id="openSettingsLogin" class="settings-dot">⚙︎</button>
-  <div class="login-card">
-    <img src="icon.png" class="login-icon" alt="">
-    <h1>CELLARIUM</h1>
-    <form id="loginForm">
-      <input id="loginEmail" type="email" placeholder="Identifiant / email" required>
-      <input id="loginPassword" type="password" placeholder="Mot de passe" required>
-      <button>Se connecter</button>
-    </form>
-    <button id="createAccount" class="text-button">Créer un compte local</button>
-  </div>
+  <button id="openSettingsLaunch" class="settings-dot">⚙︎</button>
+  <img src="launch.png" class="launch-img" alt="Cellarium">
+  <button id="enterApp" class="launch-enter" aria-label="Entrer dans la cave"></button>
 </section>
 
 <section id="app" class="app hidden">
-  <aside class="sidebar">
-    <div class="brand">
-      <img src="icon.png" alt="">
-      <div>CELLARIUM</div>
-    </div>
+  <aside class="side">
+    <div class="brand"><img src="icon.png"><span>CELLARIUM</span></div>
     <nav>
       <button class="active" data-nav="cave">▣ LA CAVE</button>
       <button data-nav="carnet">▧ CARNET</button>
@@ -54,59 +38,64 @@
   </aside>
 
   <main>
-    <header class="mobile-head">
-      <button id="openSettingsApp" class="settings-mini">⚙︎</button>
-      <div>
-        <span>CELLARIUM</span>
-        <h1 id="screenTitle">La Cave</h1>
-      </div>
-    </header>
+    <button id="openSettingsApp" class="settings-dot app-settings">⚙︎</button>
 
-    <section id="cave" class="screen cave-screen">
-      <div class="page-title">
-        <h2>LA CAVE</h2>
-        <p>Votre bibliothèque de vins</p>
-      </div>
-
-      <div class="cave-tools">
-        <input id="searchBottle" placeholder="Rechercher un vin, un domaine, une appellation...">
-        <select id="filterRegion">
-          <option value="">Tous les emplacements</option>
-          <option>RHÔNE</option>
-          <option>SAUTERNES</option>
-          <option>BOURGOGNE</option>
-          <option>TOSCANE</option>
-          <option>PIÉMONT</option>
-          <option>PAUILLAC</option>
-          <option>SAUMUR</option>
-          <option>CHAMPAGNE</option>
-        </select>
-      </div>
-
-      <div class="shelf-frame">
-        <div id="bookShelf" class="book-shelf"></div>
-      </div>
-
-      <footer class="cave-footer">
-        <span id="refCount">0 références</span>
-        <span id="bottleCount">0 bouteilles en cave</span>
-        <span id="valueCount">Valeur estimée : 0 €</span>
-      </footer>
-
-      <button data-nav="addBottle" class="add-floating">+ Ajouter une bouteille</button>
+    <section id="cave" class="screen cave">
+      <h1>LA CAVE</h1><p class="sub">Votre bibliothèque de vins</p>
+      <div class="tools"><input id="searchBottle" placeholder="Rechercher un vin, un domaine, une appellation..."><select id="filterRegion"><option value="">Tous les emplacements</option></select></div>
+      <div class="shelf"><div id="bookShelf" class="books"></div></div>
+      <div class="stats"><span id="refCount">0 références</span><span id="bottleCount">0 bouteilles</span><span id="valueCount">0 €</span></div>
+      <button id="openAddChoice" class="add-main">+ Ajouter une bouteille</button>
     </section>
 
-    <section id="addBottle" class="screen form-screen hidden">
-      <h2>Ajouter une bouteille</h2>
-      <form id="bottleForm">
+    <section id="carnet" class="screen parchment hidden">
+      <h1>LE CARNET DU DÉGUSTATEUR</h1><p class="sub">Chaque dégustation est une page de votre histoire</p>
+      <div class="carnet-layout"><div id="tastingList" class="tabs"></div><article id="tastingPage" class="page"></article></div>
+    </section>
+
+    <section id="traces" class="screen parchment hidden">
+      <h1>MOMENTS & TRACES</h1><p class="sub">Les empreintes que le vin laisse en vous</p>
+      <div id="traceGrid" class="trace-grid"></div>
+      <button data-nav="addTrace" class="add-main">+ Nouvelle trace</button>
+    </section>
+
+    <section id="souvenir" class="screen memory hidden">
+      <h1>SOUVENIR DU JOUR</h1><p class="sub">Un souvenir choisi pour vous, chaque jour</p>
+      <article class="memory-card"><small id="memoryDate">—</small><h2 id="memoryWine">—</h2><p id="memoryRegion">—</p><blockquote id="memoryText">—</blockquote><button id="nextMemory">Un autre souvenir</button></article>
+    </section>
+
+    <section id="compagnons" class="screen parchment hidden">
+      <h1>COMPAGNONS DE DÉGUSTATION</h1><p class="sub">Ces rencontres qui donnent du goût aux vins</p>
+      <div id="companionsGrid" class="people-grid"></div>
+    </section>
+
+    <section id="culture" class="screen parchment hidden">
+      <h1>ASSOCIATIONS CULTURELLES</h1><p class="sub">Chaque vin, un univers</p>
+      <div id="cultureGrid" class="culture-grid"></div>
+    </section>
+
+    <section id="pantheon" class="screen pantheon hidden">
+      <h1>LE PANTHÉON</h1><p class="sub">Les vins d’exception, pour l’éternité</p>
+      <div id="pantheonGrid" class="pantheon-grid"></div>
+    </section>
+
+    <section id="destins" class="screen parchment hidden">
+      <h1>DESTINS</h1><p class="sub">Ces bouteilles promises à un moment ou à une personne</p>
+      <div id="destinyGrid" class="destiny-grid"></div>
+    </section>
+
+    <section id="portrait" class="screen parchment hidden">
+      <h1>PORTRAIT DU DÉGUSTATEUR</h1><p class="sub">Votre voyage, en quelques chiffres et tendances</p>
+      <div id="portraitGrid" class="portrait-grid"></div>
+    </section>
+
+    <section id="addBottleManual" class="screen form-screen hidden">
+      <h1>SAISIE MANUELLE</h1>
+      <form id="bottleForm" class="form">
         <input id="bWine" required placeholder="Nom affiché sur le livre">
         <input id="bVintage" placeholder="Millésime">
         <input id="bRegion" placeholder="Région / appellation">
-        <div class="stepper-line">
-          <button type="button" id="qtyMinus">−</button>
-          <strong id="qtyDisplay">1</strong>
-          <button type="button" id="qtyPlus">+</button>
-        </div>
+        <div class="stepper-line"><button type="button" id="qtyMinus">−</button><strong id="qtyDisplay">1</strong><button type="button" id="qtyPlus">+</button></div>
         <input id="bValue" type="number" placeholder="Valeur estimée">
         <input id="bDestiny" placeholder="Destinée à...">
         <label><input id="bPantheon" type="checkbox"> Ajouter au Panthéon</label>
@@ -114,39 +103,36 @@
       </form>
     </section>
 
-    <section id="carnet" class="screen placeholder hidden"><h2>LE CARNET DU DÉGUSTATEUR</h2><p>Écran à adapter ensuite sur le même niveau de fidélité.</p></section>
-    <section id="traces" class="screen placeholder hidden"><h2>MOMENTS & TRACES</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="souvenir" class="screen placeholder hidden"><h2>SOUVENIR DU JOUR</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="compagnons" class="screen placeholder hidden"><h2>COMPAGNONS DE DÉGUSTATION</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="culture" class="screen placeholder hidden"><h2>ASSOCIATIONS CULTURELLES</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="pantheon" class="screen placeholder hidden"><h2>LE PANTHÉON</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="destins" class="screen placeholder hidden"><h2>DESTINS</h2><p>Écran à adapter ensuite.</p></section>
-    <section id="portrait" class="screen placeholder hidden"><h2>PORTRAIT DU DÉGUSTATEUR</h2><p>Écran à adapter ensuite.</p></section>
+    <section id="addBottleAI" class="screen form-screen hidden">
+      <h1>ASSISTANT CELLARIUM IA</h1>
+      <div class="ai-card">
+        <p>Cette porte est prête pour l’IA Codex : photo d’étiquette, reconnaissance, enrichissement automatique, puis validation.</p>
+        <input id="aiPhoto" type="file" accept="image/*">
+        <button id="aiSoon">Identifier ma bouteille</button>
+      </div>
+    </section>
+
+    <section id="addTrace" class="screen form-screen hidden">
+      <h1>AJOUTER UNE TRACE</h1>
+      <form id="traceForm" class="form"><select id="trType"><option>Mémoire</option><option>Émotion</option><option>Philosophique</option><option>Culturelle</option><option>Relationnelle</option><option>Sensorielle</option></select><input id="trTitle" placeholder="Titre"><textarea id="trContent" required placeholder="Ce qui reste de ce moment..."></textarea><button>Ajouter la trace</button></form>
+    </section>
+
   </main>
 </section>
 
+<div id="addChoice" class="modal hidden">
+  <div class="modal-card">
+    <h2>Ajouter une bouteille</h2>
+    <button data-nav="addBottleManual">✒️ Informations manuelles</button>
+    <button data-nav="addBottleAI">🍇 Assistant Cellarium IA</button>
+    <button id="closeAddChoice" class="ghost">Fermer</button>
+  </div>
+</div>
+
 <aside id="settingsPanel" class="settings hidden">
   <header><h2>Settings</h2><button id="closeSettings">×</button></header>
-  <section>
-    <h3>Compte</h3>
-    <input id="profileName" placeholder="Nom">
-    <input id="profileEmail" placeholder="Email">
-    <button id="saveProfile">Enregistrer</button>
-  </section>
-  <section>
-    <h3>Sécurité</h3>
-    <input id="newPassword" type="password" placeholder="Nouveau mot de passe">
-    <button id="changePassword">Changer le mot de passe</button>
-  </section>
-  <section>
-    <h3>Données</h3>
-    <button id="exportData">Exporter</button>
-    <button id="wipeData" class="danger">Tout supprimer</button>
-  </section>
-  <section>
-    <h3>Session</h3>
-    <button id="logout">Déconnexion</button>
-  </section>
+  <section><h3>Compte</h3><input id="profileName" placeholder="Nom"><input id="profileEmail" placeholder="Email"><button id="saveProfile">Enregistrer</button></section>
+  <section><h3>Données</h3><button id="exportData">Exporter</button><button id="wipeData" class="danger">Tout supprimer</button></section>
 </aside>
 
 </body>
