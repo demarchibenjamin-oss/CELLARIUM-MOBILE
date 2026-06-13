@@ -1,10 +1,10 @@
 {
-  "name": "Cellarium V8",
+  "name": "Cellarium V9",
   "short_name": "Cellarium",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#2b0f0a",
-  "theme_color": "#2b0f0a",
+  "background_color": "#24100b",
+  "theme_color": "#24100b",
   "icons": [
     {
       "src": "icon.png",
