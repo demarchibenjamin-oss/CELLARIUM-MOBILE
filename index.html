@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#24100b">
+<meta name="theme-color" content="#2a0d08">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Cellarium">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -11,135 +11,149 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
-<title>Cellarium V12</title>
+<title>Cellarium V13</title>
 </head>
 <body>
 
 <section id="launch" class="launch">
   <button id="openSettingsLaunch" class="settings-dot">⚙︎</button>
-  <div class="launch-art">
-    <img src="icon.png" class="launch-icon" alt="">
-    <h1>CELLARIUM</h1>
-    <p class="launch-sub">BIBLIOTHÈQUE DU GOÛT ET DU TEMPS</p>
-    <div class="ornament">◇──────◆──────◇</div>
-    <blockquote>« le véritable voyage ne consiste pas<br>à chercher de nouveaux paysages<br>mais à avoir de nouveaux yeux. »</blockquote>
-    <button id="enterApp" class="enter-btn">⚿ &nbsp; ENTRER DANS LA CAVE</button>
-    <p class="baseline">Votre bibliothèque personnelle des souvenirs œnologiques</p>
+  <div class="launch-scene">
+    <div class="launch-left">
+      <div class="arch">
+        <div class="bottles"></div>
+        <div class="candle"></div>
+      </div>
+      <div class="old-books">
+        <div>BORDEAUX</div><div>BOURGOGNE</div><div>RHÔNE</div><div>CHAMPAGNE</div>
+      </div>
+      <div class="wine-glass"></div>
+      <div class="open-book"></div>
+    </div>
+
+    <div class="launch-center">
+      <img src="icon.png" class="launch-icon" alt="">
+      <h1>CELLARIUM</h1>
+      <p>Bibliothèque du goût et du temps</p>
+      <div class="gold-line">◇────◆────◇</div>
+      <blockquote>« le véritable voyage ne consiste pas à chercher de nouveaux paysages mais à avoir de nouveaux yeux. »</blockquote>
+      <button id="enterApp" class="enter-btn">⚿ &nbsp; ENTRER DANS LA CAVE</button>
+      <small>Votre bibliothèque personnelle des souvenirs œnologiques</small>
+    </div>
+
+    <div class="launch-right">
+      <div class="grapes"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="vineyard"></div>
+    </div>
   </div>
 </section>
 
 <section id="app" class="app hidden">
-  <div id="scaleWrap" class="scale-wrap">
-    <div id="stage" class="stage">
-      <aside class="side">
-        <div class="brand">
-          <img src="icon.png" alt="">
-          <span>CELLARIUM</span>
-        </div>
-        <nav>
-          <button class="active" data-nav="cave">▣ LA CAVE</button>
-          <button data-nav="carnet">▧ CARNET</button>
-          <button data-nav="traces">✧ TRACES</button>
-          <button data-nav="souvenir">◈ SOUVENIR DU JOUR</button>
-          <button data-nav="compagnons">♚ COMPAGNONS</button>
-          <button data-nav="culture">✺ ASSOCIATIONS CULTURELLES</button>
-          <button data-nav="pantheon">♜ PANTHÉON</button>
-          <button data-nav="destins">◷ DESTINS</button>
-          <button data-nav="portrait">♙ PORTRAIT</button>
-        </nav>
-      </aside>
-
-      <main class="content">
-        <button id="openSettingsApp" class="settings-dot app-settings">⚙︎</button>
-
-        <section id="cave" class="screen cave">
-          <h1>LA CAVE</h1>
-          <p class="sub">Votre bibliothèque de vins</p>
-
-          <div class="tools">
-            <input id="searchBottle" placeholder="Rechercher un vin, un domaine, une appellation...">
-            <select id="filterRegion"><option value="">Tous les emplacements</option></select>
-          </div>
-
-          <div class="shelf">
-            <div id="bookShelf" class="books"></div>
-          </div>
-
-          <div class="stats">
-            <div><b id="refCount">0</b><span>références</span></div>
-            <div><b id="bottleCount">0</b><span>bouteilles en cave</span></div>
-            <div><b id="valueCount">0 €</b><span>valeur estimée</span></div>
-          </div>
-
-          <button id="openAddChoice" class="add-main">+ Ajouter une bouteille</button>
-        </section>
-
-        <section id="carnet" class="screen parchment hidden">
-          <h1>LE CARNET DU DÉGUSTATEUR</h1>
-          <p class="sub">Chaque dégustation est une page de votre histoire</p>
-          <div class="carnet-layout"><div id="tastingList" class="tabs"></div><article id="tastingPage" class="page"></article></div>
-        </section>
-
-        <section id="traces" class="screen parchment hidden">
-          <h1>MOMENTS & TRACES</h1><p class="sub">Les empreintes que le vin laisse en vous</p>
-          <div id="traceGrid" class="trace-grid"></div>
-        </section>
-
-        <section id="souvenir" class="screen memory hidden">
-          <h1>SOUVENIR DU JOUR</h1><p class="sub">Un souvenir choisi pour vous, chaque jour</p>
-          <article class="memory-card"><small id="memoryDate">—</small><h2 id="memoryWine">—</h2><p id="memoryRegion">—</p><blockquote id="memoryText">—</blockquote><button id="nextMemory">Un autre souvenir</button></article>
-        </section>
-
-        <section id="compagnons" class="screen parchment hidden">
-          <h1>COMPAGNONS DE DÉGUSTATION</h1><p class="sub">Ces rencontres qui donnent du goût aux vins</p>
-          <div id="companionsGrid" class="people-grid"></div>
-        </section>
-
-        <section id="culture" class="screen parchment hidden">
-          <h1>ASSOCIATIONS CULTURELLES</h1><p class="sub">Chaque vin, un univers</p>
-          <div id="cultureGrid" class="culture-grid"></div>
-        </section>
-
-        <section id="pantheon" class="screen pantheon hidden">
-          <h1>LE PANTHÉON</h1><p class="sub">Les vins d’exception, pour l’éternité</p>
-          <div id="pantheonGrid" class="pantheon-grid"></div>
-        </section>
-
-        <section id="destins" class="screen parchment hidden">
-          <h1>DESTINS</h1><p class="sub">Ces bouteilles promises à un moment ou à une personne</p>
-          <div id="destinyGrid" class="destiny-grid"></div>
-        </section>
-
-        <section id="portrait" class="screen parchment hidden">
-          <h1>PORTRAIT DU DÉGUSTATEUR</h1><p class="sub">Votre voyage, en quelques chiffres et tendances</p>
-          <div id="portraitGrid" class="portrait-grid"></div>
-        </section>
-
-        <section id="addBottleManual" class="screen form-screen hidden">
-          <h1>SAISIE MANUELLE</h1>
-          <form id="bottleForm" class="form">
-            <input id="bWine" required placeholder="Nom affiché sur le livre">
-            <input id="bVintage" placeholder="Millésime">
-            <input id="bRegion" placeholder="Région / appellation">
-            <div class="stepper-line"><button type="button" id="qtyMinus">−</button><strong id="qtyDisplay">1</strong><button type="button" id="qtyPlus">+</button></div>
-            <input id="bValue" type="number" placeholder="Valeur estimée">
-            <input id="bDestiny" placeholder="Destinée à...">
-            <label><input id="bPantheon" type="checkbox"> Ajouter au Panthéon</label>
-            <button>Ajouter à la cave</button>
-          </form>
-        </section>
-
-        <section id="addBottleAI" class="screen form-screen hidden">
-          <h1>ASSISTANT CELLARIUM IA</h1>
-          <div class="ai-card">
-            <p>Flux prêt pour ton IA Codex : photo d’étiquette, reconnaissance, enrichissement automatique, validation.</p>
-            <input id="aiPhoto" type="file" accept="image/*">
-            <button id="aiSoon">Identifier ma bouteille</button>
-          </div>
-        </section>
-      </main>
+  <aside class="side">
+    <div class="brand">
+      <img src="icon.png" alt="">
+      <span>CELLARIUM</span>
     </div>
-  </div>
+    <nav>
+      <button class="active" data-nav="cave">▣ LA CAVE</button>
+      <button data-nav="carnet">▧ CARNET</button>
+      <button data-nav="traces">✧ TRACES</button>
+      <button data-nav="souvenir">◈ SOUVENIR DU JOUR</button>
+      <button data-nav="compagnons">♚ COMPAGNONS</button>
+      <button data-nav="culture">✺ ASSOCIATIONS CULTURELLES</button>
+      <button data-nav="pantheon">♜ PANTHÉON</button>
+      <button data-nav="destins">◷ DESTINS</button>
+      <button data-nav="portrait">♙ PORTRAIT</button>
+    </nav>
+  </aside>
+
+  <main>
+    <button id="openSettingsApp" class="settings-dot app-settings">⚙︎</button>
+
+    <section id="cave" class="screen cave">
+      <header class="screen-title"><h1>LA CAVE</h1><p>Votre bibliothèque de vins</p></header>
+      <div class="tools"><input id="searchBottle" placeholder="Rechercher un vin, un domaine, une appellation..."><select id="filterRegion"><option value="">Tous les emplacements</option></select></div>
+      <div class="wood-shelf"><div id="bookShelf" class="books"></div></div>
+      <div class="bottom-stats"><span id="refCount">0 références</span><span id="bottleCount">0 bouteilles</span><span id="valueCount">0 €</span></div>
+      <button id="openAddChoice" class="gold-btn">+ Ajouter une bouteille</button>
+    </section>
+
+    <section id="carnet" class="screen parchment hidden">
+      <header class="screen-title"><h1>LE CARNET DU DÉGUSTATEUR</h1><p>Chaque dégustation est une page de votre histoire</p></header>
+      <div class="carnet-layout">
+        <aside id="tastingList" class="tasting-list"></aside>
+        <article id="tastingPage" class="manuscript-page"></article>
+      </div>
+    </section>
+
+    <section id="traces" class="screen parchment vine-corner hidden">
+      <header class="screen-title"><h1>MOMENTS & TRACES</h1><p>Les empreintes que le vin laisse en vous</p></header>
+      <div id="traceGrid" class="trace-grid"></div>
+      <p class="motto">Ce ne sont pas les vins que l’on oublie, ce sont les moments qu’ils ont révélés.</p>
+    </section>
+
+    <section id="souvenir" class="screen souvenir hidden">
+      <header class="screen-title"><h1>SOUVENIR DU JOUR</h1><p>Un souvenir choisi pour vous, chaque jour</p></header>
+      <button id="prevMemory" class="arrow left">‹</button>
+      <article class="souvenir-card">
+        <small id="memoryDate">—</small>
+        <h2 id="memoryWine">—</h2>
+        <p id="memoryRegion">—</p>
+        <blockquote id="memoryText">—</blockquote>
+        <p id="memoryContext">—</p>
+        <div class="ornament">◆</div>
+        <small id="memoryAgo">—</small>
+      </article>
+      <button id="nextMemory" class="arrow right">›</button>
+    </section>
+
+    <section id="compagnons" class="screen parchment hidden">
+      <header class="screen-title"><h1>COMPAGNONS DE DÉGUSTATION</h1><p>Ces rencontres qui donnent du goût aux vins</p></header>
+      <div id="companionsGrid" class="people-grid"></div>
+      <p class="motto">Le vin n’est rien sans ceux avec qui on le partage.</p>
+    </section>
+
+    <section id="culture" class="screen parchment hidden">
+      <header class="screen-title"><h1>ASSOCIATIONS CULTURELLES</h1><p>Chaque vin, un univers</p></header>
+      <div id="cultureGrid" class="culture-grid"></div>
+      <p class="motto">L’art et le vin sont deux chemins vers la même vérité.</p>
+    </section>
+
+    <section id="pantheon" class="screen pantheon hidden">
+      <header class="screen-title"><h1>LE PANTHÉON</h1><p>Les vins d’exception, pour l’éternité</p></header>
+      <div id="pantheonGrid" class="pantheon-grid"></div>
+    </section>
+
+    <section id="destins" class="screen parchment hidden">
+      <header class="screen-title"><h1>DESTINS</h1><p>Ces bouteilles promises à un moment ou à une personne</p></header>
+      <div id="destinyGrid" class="destiny-grid"></div>
+      <p class="motto">Certains vins ne se boivent pas, ils se vivent au bon moment.</p>
+    </section>
+
+    <section id="portrait" class="screen parchment hidden">
+      <header class="screen-title"><h1>PORTRAIT DU DÉGUSTATEUR</h1><p>Votre voyage, en quelques chiffres et tendances</p></header>
+      <div id="portraitGrid" class="portrait-grid"></div>
+      <p class="motto">Votre palais est votre boussole, votre mémoire est votre carte.</p>
+    </section>
+
+    <section id="addBottleManual" class="screen form-screen hidden">
+      <header class="screen-title"><h1>SAISIE MANUELLE</h1><p>Créer un nouveau livre dans la Cave</p></header>
+      <form id="bottleForm" class="form">
+        <input id="bWine" required placeholder="Nom affiché sur le livre">
+        <input id="bVintage" placeholder="Millésime">
+        <input id="bRegion" placeholder="Région / appellation">
+        <div class="stepper-line"><button type="button" id="qtyMinus">−</button><strong id="qtyDisplay">1</strong><button type="button" id="qtyPlus">+</button></div>
+        <input id="bValue" type="number" placeholder="Valeur estimée">
+        <input id="bDestiny" placeholder="Destinée à...">
+        <label><input id="bPantheon" type="checkbox"> Ajouter au Panthéon</label>
+        <button>Ajouter à la cave</button>
+      </form>
+    </section>
+
+    <section id="addBottleAI" class="screen form-screen hidden">
+      <header class="screen-title"><h1>ASSISTANT CELLARIUM IA</h1><p>Préparation du connecteur Codex</p></header>
+      <div class="ai-card"><p>Flux prévu : photo d’étiquette, reconnaissance, enrichissement automatique, validation, puis création du livre.</p><input id="aiPhoto" type="file" accept="image/*"><button id="aiSoon">Identifier ma bouteille</button></div>
+    </section>
+  </main>
 </section>
 
 <div id="addChoice" class="modal hidden">
